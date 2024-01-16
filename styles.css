@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto+Mono&display=swap");
+
+body {
+  font-family: "Roboto Mono", monospace;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.5s ease-in-out;
+  background-color: #ffffff;
+}
+
+.carSmall {
+  height: 100px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carSmall:hover {
+  transform: scale(1.2);
+}
+
+.background {
+  background-color: #4b4b4b4e;
+}
+
+nav,
+section,
+footer {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #000000;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #4b4b4b4e;
+  border: 1px solid #000000;
+  z-index: 1;
+  margin: 0 20px;
+}
+
+header h1 {
+  margin: 0 auto;
+}
+
+header a img {
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+form {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.car {
+  height: 500px;
+}
+
+.car-description {
+  margin: 1em;
+}
+
+#e36,
+#e92,
+#s14,
+#r32,
+#g80 {
+  display: flex;
+}
+
+.carsListBig {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  justify-content: space-between;
+  background-color: #4b4b4b4e;
+}
+
+.carsListSmall {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #4b4b4b4e;
+}
+
+.carsListItem {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.carsListItemName {
+  padding-left: 20px;
+}
+
+.no-decoration {
+  text-decoration: none;
+  color: black;
+  width: fit-content;
+}
+
+@media print {
+  header,
+  #voting-section,
+  footer,
+  .carsListSmall {
+    display: none;
+  }
+  .background {
+    background-color: white;
+  }
+  body::before {
+    background-image: none;
+  }
+  #e36,
+  #e92,
+  #s14,
+  #r32,
+  #g80 {
+    flex-direction: column;
+    width: 100%;
+    max-height: 100vh;
+  }
+  #e36 img,
+  #e92 img,
+  #s14 img,
+  #r32 img,
+  #g80 img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+.enlarged-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.enlarged-info {
+  text-align: center;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
