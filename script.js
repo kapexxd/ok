@@ -1,16 +1,3 @@
-function validateForm() {
-  const upvote = document.getElementById("upvote").value;
-  const downvote = document.getElementById("downvote").value;
-  const additionalCar = document.getElementById("additional-car").value;
-
-  if (!upvote && !downvote && additionalCar.trim() === "") {
-    alert("Please fill in at least one field before submitting the data.");
-    return false;
-  }
-
-  return true;
-}
-
 function showInfo(title, description) {
   document.getElementById(
     "enlargedInfo"
@@ -21,14 +8,13 @@ function showInfo(title, description) {
 function hideInfo() {
   document.getElementById("enlargedContainer").style.display = "none";
 }
+
 $(document).ready(function () {
   var timeoutId;
 
-  // Replace '#image-container' with the actual container ID for your images
   $(".carsListItem").on("mouseover", ".carSmall", function () {
     var imageUrl = $(this).attr("src");
-    clearTimeout(timeoutId); // Cancel the removal timeout
-
+    clearTimeout(timeoutId);
     $("body")
       .css({
         position: "relative",
@@ -44,21 +30,46 @@ $(document).ready(function () {
       "background-size": "cover",
       "background-repeat": "no-repeat",
       filter: "blur(20px)",
-      opacity: "1",
+      opacity: "0.8",
       "z-index": "-1",
       transition: "opacity 0.5s ease, filter 0.5s ease",
     });
   });
 
-  // Reset background to default when not hovering
   $(".carsListItem").on("mouseout", ".carSmall", function () {
     $(".background-layer").css({
       opacity: "0",
     });
 
-    // Set a timeout to remove the background layer after the transition
     timeoutId = setTimeout(function () {
       $(".background-layer").remove();
-    }, 500); // Adjust the timeout to match the transition duration
+    }, 200);
   });
 });
+
+function validateForm() {
+  var wheelsInput = document.getElementById("wheels");
+  if (!isPositiveInteger(wheelsInput.value)) {
+    alert("Please enter a whole positive number for the number of wheels.");
+    return false;
+  }
+
+  var upvoteSelect = document.getElementById("upvote");
+  if (upvoteSelect.value === "") {
+    alert("Please select a car to upvote.");
+    return false;
+  }
+
+  var downvoteSelect = document.getElementById("downvote");
+  if (downvoteSelect.value === "") {
+    alert("Please select a car to downvote.");
+    return false;
+  }
+
+  return true;
+}
+
+function isPositiveInteger(value) {
+  var pattern = /^[1-9]\d*$/;
+  return pattern.test(value);
+}
